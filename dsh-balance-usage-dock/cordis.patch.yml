@@ -1,0 +1,19 @@
+# Bundle patch for @deepseek-harness/dsh-balance-usage-dock.
+#
+# One row inserts the Host half, which owns the account poller and the
+# /dsh-balance-usage/state route. The package's `dsh.client` declaration ships
+# the browser half, so the Web module graph loads it with the same row.
+#
+# Every option below is optional; delete `config` to accept the defaults.
+- insert:
+    - id: balance-usage-dock
+      name: '@deepseek-harness/dsh-balance-usage-dock'
+      config:
+        # How often the Host reads the DeepSeek Platform account summary.
+        pollIntervalMs: 15000
+        # Platform origin whose stored login grant is read.
+        platformOrigin: 'https://platform.deepseek.com'
+        # Credential key of that grant; change only for a re-scoped login.
+        credentialKey: 'deepseek-account-platform/default'
+        # Deadline for one Platform summary read.
+        requestTimeoutMs: 10000

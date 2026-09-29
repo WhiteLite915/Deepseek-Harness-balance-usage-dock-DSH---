@@ -1,0 +1,68 @@
+{
+  "name": "@deepseek-harness/dsh-balance-usage-dock",
+  "version": "1.0.0",
+  "description": "Harness Web UI plugin: live DeepSeek account balance, today's spend and a per-response token chart beside the composer's performance and usage pills.",
+  "keywords": [
+    "deepseek",
+    "deepseek-harness",
+    "dsh",
+    "dsh-plugin",
+    "cordis",
+    "plugin",
+    "balance",
+    "usage"
+  ],
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./package.json": "./package.json",
+    "./locale/en.json": "./locale/en.json",
+    "./locale/zh.json": "./locale/zh.json"
+  },
+  "files": [
+    "index.js",
+    "client.js",
+    "cordis.patch.yml",
+    "icon.svg",
+    "install.ps1",
+    "scripts/install.mjs",
+    "locale/*.json",
+    "README.md",
+    "README.zh.md",
+    "LICENSE"
+  ],
+  "icon": "./icon.svg",
+  "dsh": {
+    "manifestVersion": 1,
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-conversation"
+      ]
+    }
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OWNER/dsh-balance-usage-dock.git"
+  },
+  "bugs": {
+    "url": "https://github.com/OWNER/dsh-balance-usage-dock/issues"
+  },
+  "homepage": "https://github.com/OWNER/dsh-balance-usage-dock#readme",
+  "scripts": {
+    "check": "node test/package-check.mjs && node test/seam-injection-check.mjs && node test/projection-check.mjs && node test/host-check.mjs && node test/client-check.mjs",
+    "smoke": "node test/live-smoke.mjs"
+  }
+}
